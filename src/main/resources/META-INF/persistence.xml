@@ -4,13 +4,37 @@
              version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
 
     <persistence-unit name="hello">
-        <class>hellojpa.Member</class>
+        <class>jpa.hello.Member</class>
         <properties>
             <!-- 필수 속성 -->
 
             <!--사용하는 드라이버에 따라 달라짐-->
             <property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
             <property name="javax.persistence.jdbc.url"    value="jdbc:h2:tcp://localhost/~/test" />
+            <property name="javax.persistence.jdbc.user" value="sa" />
+            <property name="javax.persistence.jdbc.password" value="" />
+            <!--사용하는 드라이버에 따라 달라짐-->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.use_sql_comments" value="true"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.temp.use_jdbc_metadata_defaults" value="false"/>
+            <property name="hibernate.hbm2ddl.auto" value="create" />
+        </properties>
+    </persistence-unit>
+
+    <persistence-unit name="jpaShop">
+        <class>jpa.shop.domain.Item</class>
+        <class>jpa.shop.domain.Member</class>
+        <class>jpa.shop.domain.Order</class>
+        <class>jpa.shop.domain.OrderItem</class>
+        <properties>
+            <!-- 필수 속성 -->
+
+            <!--사용하는 드라이버에 따라 달라짐-->
+            <property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
+            <property name="javax.persistence.jdbc.url"    value="jdbc:h2:tcp://localhost/~/jpaShop" />
             <property name="javax.persistence.jdbc.user" value="sa" />
             <property name="javax.persistence.jdbc.password" value="" />
             <!--사용하는 드라이버에 따라 달라짐-->
