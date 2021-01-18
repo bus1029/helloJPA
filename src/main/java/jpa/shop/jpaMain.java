@@ -1,5 +1,8 @@
 package jpa.shop;
 
+import jpa.shop.domain.Member;
+import jpa.shop.domain.Order;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -20,6 +23,14 @@ public class jpaMain {
     try {
       // 스프링을 사용하면 이런 코드들이 다 사라지고 persist만 하면 됨
       // 나머지는 스프링이 다 알아서 해줌
+      Order order = em.find(Order.class, 1L);
+      Long memberId = order.getMemberId();
+      // 객체지향스럽지 못함
+//      Member member = em.find(Member.class, memberId);
+
+      // 객체지향!
+//      Member member = order.getMember();
+
 
       tx.commit();
     } catch (Exception e) {

@@ -11,7 +11,15 @@ public class Order {
   private Long id;
   @Column(name = "MEMBER_ID")
   private Long memberId;
-  private LocalDateTime orderDate;
+
+  // 객체지향적인 설계 필요
+/*  private Member member;
+
+  public Member getMember() {
+    return member;
+  }*/
+
+  private LocalDateTime orderDate; // 스프링부트에선 생성 관례를 덮어쓸 수 있음, (ORDER_DATE, order_date) 스프링부트는 _ 가 기본
   @Enumerated(EnumType.STRING)
   private OrderStatus status;
 
