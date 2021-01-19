@@ -48,8 +48,13 @@ public class Member {
   @Transient
   private int tmp;
 
-  @Column(name = "TEAM_ID")
-  private Long teamId;
+//  @Column(name = "TEAM_ID")
+//  private Long teamId;
+
+  // Member 입장에선 다수이기 때문에
+  @ManyToOne
+  @JoinColumn(name = "TEAM_ID")
+  private Team team;
 
   public Member() {
 
@@ -63,12 +68,21 @@ public class Member {
     this.username = username;
   }
 
-  public Long getTeamId() {
-    return teamId;
+//  public Long getTeamId() {
+//    return teamId;
+//  }
+//
+//  public void setTeamId(Long teamId) {
+//    this.teamId = teamId;
+//  }
+
+
+  public Team getTeam() {
+    return team;
   }
 
-  public void setTeamId(Long teamId) {
-    this.teamId = teamId;
+  public void setTeam(Team team) {
+    this.team = team;
   }
 
   public Long getId() {

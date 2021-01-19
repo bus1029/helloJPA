@@ -42,15 +42,18 @@ public class JpaMain {
       em.persist(team);
 
       // 외래키를 직접 다루는 상황
+      // 이젠 Team을 직접 넣을 수 있음
       Member member = new Member();
       member.setUsername("member1");
-      member.setTeamId(team.getId());
+//      member.setTeamId(team.getId());
+      member.setTeam(team);
       em.persist(member);
 
       // 조회에도 문제가 발생
       Member findMember = em.find(Member.class, member.getId());
-      Long findTeamId = findMember.getTeamId();
-      Team findTeam = em.find(Team.class, findTeamId);
+//      Long findTeamId = findMember.getTeamId();
+//      Team findTeam = em.find(Team.class, findTeamId);
+      Team findTeam = findMember.getTeam();
 
       tx.commit();
     } catch (Exception e) {
