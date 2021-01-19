@@ -36,6 +36,22 @@ public class JpaMain {
 /*      Member findMember = em.find(Member.class, 1L);
       findMember.setName("HelloJPA");*/
 
+      // 객체지향적이지 못한 설계로 이뤄지는 persist
+      Team team = new Team();
+      team.setName("TeamA");
+      em.persist(team);
+
+      // 외래키를 직접 다루는 상황
+      Member member = new Member();
+      member.setUsername("member1");
+      member.setTeamId(team.getId());
+      em.persist(member);
+
+      // 조회에도 문제가 발생
+      Member findMember = em.find(Member.class, member.getId());
+      Long findTeamId = findMember.getTeamId();
+      Team findTeam = em.find(Team.class, findTeamId);
+
       tx.commit();
     } catch (Exception e) {
       tx.rollback();

@@ -19,6 +19,7 @@ public class Member {
   private String id;*/
 
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "MEMBER_SEQ_GENERATOR")
+  @Column(name = "MEMBER_ID")
   private Long id;
 
   // 컬럼 이름도 따로 명시 가능
@@ -47,7 +48,34 @@ public class Member {
   @Transient
   private int tmp;
 
+  @Column(name = "TEAM_ID")
+  private Long teamId;
+
   public Member() {
 
+  }
+
+  public String getUsername() {
+    return username;
+  }
+
+  public void setUsername(String username) {
+    this.username = username;
+  }
+
+  public Long getTeamId() {
+    return teamId;
+  }
+
+  public void setTeamId(Long teamId) {
+    this.teamId = teamId;
+  }
+
+  public Long getId() {
+    return id;
+  }
+
+  public void setId(Long id) {
+    this.id = id;
   }
 }
