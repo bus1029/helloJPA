@@ -4,6 +4,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import java.util.List;
 
 public class JpaMain {
   public static void main(String[] args) {
@@ -49,12 +50,19 @@ public class JpaMain {
       member.setTeam(team);
       em.persist(member);
 
+      em.flush();
+      em.clear();
+
       // 조회에도 문제가 발생
+      // 연관관계 매핑을 했으니 이젠 편하게 할 수 있음
       Member findMember = em.find(Member.class, member.getId());
 //      Long findTeamId = findMember.getTeamId();
 //      Team findTeam = em.find(Team.class, findTeamId);
       Team findTeam = findMember.getTeam();
 
+      //  양방향 매핑이기 때문에 Team에서도 Member를 찾을 수 있음
+      List<Member> members = findTeam.getMembers();
+      members.forEach(m -> System.out.println("Member: " + m.getUsername()));
       tx.commit();
     } catch (Exception e) {
       tx.rollback();
