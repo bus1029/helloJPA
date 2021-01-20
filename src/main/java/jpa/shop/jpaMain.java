@@ -1,7 +1,7 @@
 package jpa.shop;
 
-import jpa.shop.domain.Member;
 import jpa.shop.domain.Order;
+import jpa.shop.domain.OrderItem;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -23,14 +23,23 @@ public class jpaMain {
     try {
       // 스프링을 사용하면 이런 코드들이 다 사라지고 persist만 하면 됨
       // 나머지는 스프링이 다 알아서 해줌
-      Order order = em.find(Order.class, 1L);
-      Long memberId = order.getMemberId();
+//      Order order = em.find(Order.class, 1L);
+//      Long memberId = order.getMemberId();
       // 객체지향스럽지 못함
 //      Member member = em.find(Member.class, memberId);
 
       // 객체지향!
 //      Member member = order.getMember();
 
+      Order order = new Order();
+      em.persist(order);
+      // 편의 메소드를 사용해서 양방향에 편하게 추가
+//      order.addOrderItem(new OrderItem());
+
+      // 양방향 연관관계를 사용하지 않더라도 충분히 대체 가능
+      OrderItem orderItem = new OrderItem();
+      orderItem.setOrder(order);
+      em.persist(orderItem);
 
       tx.commit();
     } catch (Exception e) {
