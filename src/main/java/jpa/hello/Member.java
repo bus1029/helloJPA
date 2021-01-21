@@ -1,7 +1,9 @@
 package jpa.hello;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 // Entity를 명시해줘야 JPA에서 관리해줌
 @Entity
@@ -59,6 +61,10 @@ public class Member {
   @OneToOne
   @JoinColumn(name = "LOCKER_ID")
   private Locker locker;
+
+  @ManyToMany
+  @JoinTable(name = "MEMBER_PRODUCT")
+  private List<Product> productList = new ArrayList<>();
 
   public Member() {
 
