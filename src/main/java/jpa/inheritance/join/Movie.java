@@ -1,6 +1,4 @@
-package jpa.inheritance;
-
-import jpa.inheritance.Item;
+package jpa.inheritance.join;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;

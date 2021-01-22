@@ -1,4 +1,4 @@
-package jpa.inheritance;
+package jpa.inheritance.single;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;

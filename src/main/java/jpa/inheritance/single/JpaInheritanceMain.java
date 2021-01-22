@@ -1,13 +1,9 @@
-package jpa.inheritance;
-
-import jpa.hello.Member;
-import jpa.hello.Team;
+package jpa.inheritance.single;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import java.util.List;
 
 public class JpaInheritanceMain {
   public static void main(String[] args) {

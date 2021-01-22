@@ -1,4 +1,4 @@
-package jpa.inheritance;
+package jpa.inheritance.join;
 
 import javax.persistence.*;
 
