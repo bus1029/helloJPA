@@ -1,4 +1,4 @@
-package jpa.inheritance.single;
+package jpa.inheritance.per;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -23,8 +23,9 @@ public class JpaInheritanceMain {
       em.flush();
       em.clear();
 
-      // 넣고 뺴고 쿼리가 굉장히 심플함
-      Movie findMovie = em.find(Movie.class, movie.getId());
+      // 부모 클래스를 찾으려고 하면 모든 테이블들을 다 뒤져봐야 함
+      // => 엄청 복잡한 쿼리가 발행됨
+      Item findItem = em.find(Item.class, movie.getId());
 
       tx.commit();
     } catch (Exception e) {
