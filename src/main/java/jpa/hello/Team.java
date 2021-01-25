@@ -11,6 +11,13 @@ public class Team extends BaseEntity {
   private Long id;
   private String name;
 
+  public Team(String name) {
+    this.name = name;
+  }
+
+  public Team() {
+  }
+
   // 반대이기 때문에 OneToMany
   // mappedBy -> Member에 있는 team 변수와 연관되어 있다
   @OneToMany(mappedBy = "team")

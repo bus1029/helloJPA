@@ -4,7 +4,12 @@
              version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
 
     <persistence-unit name="hello">
+        <class>jpa.hello.BaseEntity</class>
+        <class>jpa.hello.Product</class>
         <class>jpa.hello.Member</class>
+        <class>jpa.hello.Team</class>
+        <class>jpa.hello.MemberProduct</class>
+<!--        <class>jpa.hello.Locker</class>-->
         <properties>
             <!-- 필수 속성 -->
 
@@ -20,7 +25,7 @@
             <property name="hibernate.use_sql_comments" value="true"/>
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.temp.use_jdbc_metadata_defaults" value="false"/>
-            <property name="hibernate.hbm2ddl.auto" value="create" />
+<!--            <property name="hibernate.hbm2ddl.auto" value="none" />-->
         </properties>
     </persistence-unit>
 
