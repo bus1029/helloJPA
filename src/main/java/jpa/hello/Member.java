@@ -14,7 +14,7 @@ import java.util.List;
         sequenceName = "MEMBER_SEQ",
         initialValue = 1, allocationSize = 1
 )
-public class Member {
+public class Member extends BaseEntity {
   // Primary Key
   @Id
 /*  @GeneratedValue(strategy = GenerationType.IDENTITY)
