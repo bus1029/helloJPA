@@ -12,10 +12,6 @@ public class Category {
 
   private String name;
 
-  @OneToOne
-  @JoinColumn(name = "DELIVERY_ID")
-  private Delivery delivery;
-
   // 자식입장에선 부모가 하나
   @ManyToOne
   @JoinColumn(name = "PARENT_ID")
