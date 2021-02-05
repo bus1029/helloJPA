@@ -16,7 +16,7 @@ public class Order {
   @JoinColumn(name = "MEMBER_ID")
   private Member member;
 
-  @OneToOne(fetch = FetchType.LAZY)
+  @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   @JoinColumn(name = "DELIVERY_ID")
   private Delivery delivery;
 
@@ -24,7 +24,7 @@ public class Order {
   @Enumerated(EnumType.STRING)
   private OrderStatus status;
 
-  @OneToMany(mappedBy = "order")
+  @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
   private List<OrderItem> orderItems = new ArrayList<>();
 
   public Long getId() {
