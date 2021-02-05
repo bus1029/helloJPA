@@ -21,6 +21,7 @@ public class Category {
   @OneToMany(mappedBy = "parent")
   private List<Category> childs = new ArrayList<>();
 
+  // 실전에선 ManyToMany 매핑은 사용하지 말고 일대다, 다대일 매핑으로 풀어낼 것
   @ManyToMany
   @JoinTable(name = "CATEGORY_ITEM",
           joinColumns = @JoinColumn(name = "CATEGORY_ID"),
