@@ -13,7 +13,7 @@ public class Category {
   private String name;
 
   // 자식입장에선 부모가 하나
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "PARENT_ID")
   private Category parent;
 

@@ -11,7 +11,7 @@ public class Delivery {
   private String street;
   private String zipCode;
 
-  @OneToOne(mappedBy = "delivery")
+  @OneToOne(mappedBy = "delivery", fetch = FetchType.LAZY)
   private Order order;
 
   @Enumerated(EnumType.STRING)
