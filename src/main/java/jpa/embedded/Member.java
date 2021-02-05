@@ -1,7 +1,10 @@
 package jpa.embedded;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Member {
@@ -19,7 +22,21 @@ public class Member {
 
   // 주소
   @Embedded
-  private Address address;
+  private Address homeAddress;
+
+  @ElementCollection
+  @CollectionTable(name = "FAVORITE_FOOD", joinColumns =
+    @JoinColumn(name = "MEMBER_ID")
+  )
+  // String이기 때문에 Column Mapping 허용
+  @Column(name = "FOOD_NAME")
+  private Set<String> favoriteFoods = new HashSet<>();
+
+  @ElementCollection
+  @CollectionTable(name = "ADDRESS", joinColumns =
+    @JoinColumn(name = "MEMBER_ID")
+  )
+  private List<Address> addressHistory = new ArrayList<>();
 
   public Long getId() {
     return id;
@@ -45,11 +62,11 @@ public class Member {
     this.workPeriod = workPeriod;
   }
 
-  public Address getAddress() {
-    return address;
+  public Address getHomeAddress() {
+    return homeAddress;
   }
 
-  public void setAddress(Address address) {
-    this.address = address;
+  public void setHomeAddress(Address homeAddress) {
+    this.homeAddress = homeAddress;
   }
 }
