@@ -6,10 +6,16 @@ import javax.persistence.*;
 public class Delivery {
   @Id @GeneratedValue
   private Long id;
+  @Embedded
+  private Address address;
 
-  private String city;
-  private String street;
-  private String zipCode;
+  public Address getAddress() {
+    return address;
+  }
+
+  public void setAddress(Address address) {
+    this.address = address;
+  }
 
   @OneToOne(mappedBy = "delivery", fetch = FetchType.LAZY)
   private Order order;
